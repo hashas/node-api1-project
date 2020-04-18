@@ -34,8 +34,24 @@ function createUser(data) {
     return payload
 }
 
+function deleteUser (id) {
+    users = users.filter(u => u.id !== id) // why not 'return' instead of 'users ='?
+}
+
+function updateUser (id, data) {
+    const index = users.findIndex(u => u.id === id)
+    users[index] = {
+        ...users[index],
+        ...data
+    }
+
+    return users[index]
+}
+
 module.exports = {
     getUsers,
     getUserById,
-    createUser
+    createUser,
+    deleteUser,
+    updateUser
 }
